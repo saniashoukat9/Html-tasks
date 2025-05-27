@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Grade Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #ccc;
+        }
+
+        h1 {
+            color: #333;
+        }
+input{
+    width: 30%;
+    outline-color: skyblue;
+}
+input:hover{
+    
+    outline-color: skyblue;
+}
+        input,
+        button {
+            padding: 8px 12px;
+            margin: 5px 5px 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            
+        }
+
+        .delete-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c9302c;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .low-score {
+            background-color: rgb(196, 47, 47);
+            color: white;
+            font-weight: bold;
+        }
+
+        #averageMarks {
+            margin-top: 20px;
+            font-size: 18px;
+            border: 2px solid gainsboro;
+            border-radius: 5px;
+            padding: 10px;
+            width: 30%;
+            text-align: center;
+            background-color: yellow;
+        }
+
+        .bor {
+            border: 2px solid #fff;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bor">
+        <h1>Student Grade Manager🎓</h1>
+
+        <input type="text" id="studentName" placeholder="Enter student name">
+        <input type="number" id="studentMarks" placeholder="Enter marks">
+        <button onclick="addStudent()">Add Student</button>
+
+        <h3>Students List:</h3>
+        <table id="studentTable">
+            <tr>
+                <th>Name</th>
+                <th>Marks</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+        <h3 id="averageMarks">Average Marks: 0</h3>
+    </div>
+
+    <script>
+        // Student array
+        let students = [];
+
+        // Function to add student
+        function addStudent() {
+            let name = document.getElementById("studentName").value.trim();
+            let marks = Number(document.getElementById("studentMarks").value);
+
+            if (name === "" || isNaN(marks)) {
+                alert("Please enter valid name and marks.");
+                return;
+            }
+
+            let student = {
+                name: name,
+                marks: marks
+            };
+
+            students.push(student);
+            displayStudents();
+
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentMarks").value = "";
+        }
+
+        // Function to display students and calculate average
+        function displayStudents() {
+            let table = document.getElementById("studentTable");
+
+            // Clear existing rows except header
+            table.innerHTML = `
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+          <th>Action</th>
+        </tr>
+      `;
+
+            let totalMarks = 0;
+
+            students.forEach((student, index) => {
+                let row = document.createElement("tr");
+
+                // Add red background if marks < 40
+                if (student.marks < 40) {
+                    row.classList.add("low-score");
+                }
+
+                // Set row content
+                row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.marks}</td>
+          <td><button class="delete-btn" onclick="deleteStudent(${index})">Delete</button></td>
+        `;
+
+                table.appendChild(row);
+
+                totalMarks += student.marks;
+            });
+
+            // Calculate average
+            let avg = students.length > 0 ? (totalMarks / students.length).toFixed(2) : 0;
+            document.getElementById("averageMarks").textContent = "Average Marks: " + avg;
+        }
+
+        // Function to delete student
+        function deleteStudent(index) {
+            students.splice(index, 1);
+            displayStudents();
+        }
+    </script>
+
+</body>
+
+</html>
