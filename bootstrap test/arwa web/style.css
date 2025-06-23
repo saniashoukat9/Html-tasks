@@ -1,0 +1,127 @@
+/*---------- navbar------------ */
+.my-custom-btn {
+  background-color: #FFE492;
+  border: none;
+  padding-inline: 1.1rem;
+  padding-block: 0.70rem;
+  border-radius: 5px;
+}
+.nav-color{
+  background-color: #043873;
+}
+.nav-btn{
+  background-color: #4F9CF9 !important;
+}
+.navbar-nav .nav-link {
+  color: white !important;
+}
+
+/*---------------- media-query of navbar ------------------*/
+@media(max-width: 1109px) {
+  .navbar-nav .nav-item {
+    margin: 0 5px !important;
+  }
+
+  
+}
+@media(max-width: 1024px) {
+  .navbar-nav .nav-item {
+    margin: 0 2px !important;
+  }
+ 
+
+  .my-custom-btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+/* hero-section */
+  .hero-color{
+    background-color: #043873;
+  }
+   
+
+ 
+
+/*----------- section-5 cards----------- */
+.points img {
+  margin-right: 10px;
+  height: 15px;
+}
+
+.card {
+  transition: all 0.3s ease;
+  box-shadow: none;
+  border-radius: 1px;
+  border: 1.5px solid #FFE492 !important;
+
+}
+.card .price{
+  color: #e2b838;
+}
+.card button{
+  border: 1.5px solid #FFE492 !important;
+  border-radius: 5px;
+}
+.card button:hover{
+  background-color: #4F9CF9;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(190, 190, 190) !important;
+  background-color: #043873;
+  color: white;
+}
+
+
+
+@media (max-width: 991px) {
+  .card {
+    width: 15rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 97% !important;
+    display: flex;
+    justify-content: space-between;
+    margin: 0% auto;
+    margin-bottom: 3rem;
+  }
+}
+/* sec-3 */
+.sec-3{
+  margin-top: 3rem;
+}
+/* section-6 */
+.backcolor{
+  background-color: #043873;
+}
+.backcolor h1{
+  margin-bottom: 1rem;
+}
+/* section-8 media queries */
+.sponsor-logo {
+  height: 3.5rem; 
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+  .sponsor-logo {
+    height: 2rem !important;  
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsor-logo {
+    height: 2rem !important; 
+  }
+}
+/* section-9 */
+.sec-9 {
+  background-color: #043873 !important;
+}
